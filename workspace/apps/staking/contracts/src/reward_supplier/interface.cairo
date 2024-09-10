@@ -14,6 +14,7 @@ pub trait IRewardSupplier<TContractState> {
         message: Span<felt252>
     ) -> bool;
     fn state_of(self: @TContractState) -> RewardSupplierStatus;
+    fn set_staking_address(ref self: TContractState, staking_address: ContractAddress);
 }
 
 #[derive(Debug, Copy, Drop, Serde, PartialEq)]

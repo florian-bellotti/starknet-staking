@@ -1,7 +1,10 @@
+use starknet::ContractAddress;
+
 #[starknet::interface]
 pub trait IMintingCurve<TContractState> {
     fn yearly_mint(self: @TContractState) -> u128;
     fn contract_parameters(self: @TContractState) -> MintingCurveContractInfo;
+    fn set_staking_address(ref self: TContractState, staking_address: ContractAddress);
 }
 
 #[starknet::interface]

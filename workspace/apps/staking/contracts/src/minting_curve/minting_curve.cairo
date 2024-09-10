@@ -76,6 +76,11 @@ pub mod MintingCurve {
 
     #[abi(embed_v0)]
     impl MintingImpl of IMintingCurve<ContractState> {
+        fn set_staking_address(ref self: ContractState, staking_address: ContractAddress) {
+            self
+                .staking_dispatcher
+                .write(IStakingDispatcher { contract_address: staking_address });
+        }
         /// Return yearly mint amount.
         /// To calculate the amount, we utilize the minting curve formula (which is in percentage):
         /// M = (C / 10) * sqrt(S)

@@ -74,6 +74,10 @@ pub mod RewardSupplier {
 
     #[abi(embed_v0)]
     impl RewardSupplierImpl of IRewardSupplier<ContractState> {
+        fn set_staking_address(ref self: ContractState, staking_address: ContractAddress) {
+            self.staking_contract.write(staking_address);
+        }
+
         fn calculate_staking_rewards(ref self: ContractState) -> u128 {
             let staking_contract = self.staking_contract.read();
             assert_with_err(
