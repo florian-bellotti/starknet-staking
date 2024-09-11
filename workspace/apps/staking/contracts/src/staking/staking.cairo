@@ -144,6 +144,7 @@ pub mod Staking {
             assert_with_err(commission <= COMMISSION_DENOMINATOR, Error::COMMISSION_OUT_OF_RANGE);
             let staking_contract = get_contract_address();
             let erc20_dispatcher = self.erc20_dispatcher.read();
+            println!("staker_address: {:?}", staker_address);
             erc20_dispatcher
                 .transfer_from(
                     sender: staker_address, recipient: staking_contract, amount: amount.into()
@@ -866,6 +867,9 @@ pub mod Staking {
                 :commission,
                 :admin
             );
+            println!("pool_contract: {:?}", pool_contract);
+            println!("staker_address: {:?}", staker_address);
+            println!("commission: {:?}", commission);
             self.emit(Events::NewDelegationPool { staker_address, pool_contract, commission });
             pool_contract
         }

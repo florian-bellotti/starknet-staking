@@ -23,7 +23,7 @@ pub mod Events {
         pub self_stake: u128,
     }
 
-    #[derive(Drop, starknet::Event)]
+    #[derive(Drop, starknet::Event, Debug)]
     pub struct NewDelegationPool {
         #[key]
         pub staker_address: ContractAddress,
